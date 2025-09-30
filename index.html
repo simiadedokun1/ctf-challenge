@@ -53,24 +53,6 @@
       console.log('Thanks for trying the beginner challenge!');
     })();
   </script>
-
-  <!--
-    ======= TEACHER SOLUTION (hidden for players) =======
-
-    Locations & how to decode:
-      - PART 1: HTML comment: "ZmlkZGxl"  --> Base64 decode => "fiddle"
-        command: echo 'ZmlkZGxl' | base64 --decode
-
-      - PART 2: hidden input value: "7365656b"  --> Hex decode => "seek"
-        command: echo 7365656b | xxd -r -p
-        (or in Python: bytes.fromhex('7365656b').decode())
-
-      - PART 3: JS variable: "fhpprrq"  --> ROT13 => "succeed"
-        command: echo 'fhpprrq' | tr 'A-Za-z' 'N-ZA-Mn-za-m'
-
-      Combine: CTF{fiddle_seek_succeed}
-  -->
-
 </body>
 </html>
 
