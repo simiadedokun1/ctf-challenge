@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Page Source Challenge — Beginner CTF</title>
   <style>
-    /* Welcome! This page is intentionally simple.
+    /* Welcome!
        Your task: find three hidden parts inside the page source, decode them,
        and combine them with underscores (_) to form the final flag.
        Example final format: CTF{part1_part2_part3}
@@ -32,7 +32,7 @@
       <li>Combine the decoded parts with underscores: <code>CTF{part1_part2_part3}</code>.</li>
     </ul>
 
-    <p>If you want to test your decoding skills locally: try <code>base64 --decode</code>, <code>xxd -r -p</code> (or <code>python</code>), and <code>tr 'A-Za-z' 'N-ZA-Mn-za-m'</code> for rot13.</p>
+    <p>If you want to test your decoding skills locally: try <code>base64 --decode</code>, <code>xxd -r -p</code> (or <code>python</code>), and <code>tr 'A-Za-z' 'N-ZA-Mn-za-m'</code> for ROT13.</p>
 
     <p>Good luck — and remember: look everywhere in the source (comments, attributes, CSS, JS).</p>
   </main>
@@ -58,14 +58,14 @@
     ======= TEACHER SOLUTION (hidden for players) =======
 
     Locations & how to decode:
-      - PART 1: HTML comment: "ZmlkZGxl": Base64 decode => "fiddle"
+      - PART 1: HTML comment: "ZmlkZGxl"  --> Base64 decode => "fiddle"
         command: echo 'ZmlkZGxl' | base64 --decode
 
-      - PART 2: hidden input value: "7365656b": Hex decode => "seek"
+      - PART 2: hidden input value: "7365656b"  --> Hex decode => "seek"
         command: echo 7365656b | xxd -r -p
         (or in Python: bytes.fromhex('7365656b').decode())
 
-      - PART 3: JS variable: "fhpprrq": ROT13 => "succeed"
+      - PART 3: JS variable: "fhpprrq"  --> ROT13 => "succeed"
         command: echo 'fhpprrq' | tr 'A-Za-z' 'N-ZA-Mn-za-m'
 
       Combine: CTF{fiddle_seek_succeed}
@@ -73,3 +73,4 @@
 
 </body>
 </html>
+
