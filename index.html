@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Page Source Challenge — Beginner CTF</title>
+  <style>
+    /* Welcome! This page is intentionally simple.
+       Your task: find three hidden parts inside the page source, decode them,
+       and combine them with underscores (_) to form the final flag.
+       Example final format: CTF{part1_part2_part3}
+    */
+
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial; padding: 3rem; max-width: 760px; margin: auto; }
+    header { margin-bottom: 1.5rem; }
+    code { background:#f4f4f4; padding: .15rem .4rem; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Beginner: Find the Flag in the Page Source</h1>
+    <p>Difficulty: <strong>Beginner</strong> — suitable for first-time CTF players.
+       Open the page source (View &gt; Page Source or Ctrl+U) and hunt for three pieces.
+    </p>
+  </header>
+
+  <main>
+    <p>Hints (don't peek if you want to solve it yourself):</p>
+    <ul>
+      <li>There are three parts, each encoded differently.</li>
+      <li>Common encodings include <em>Base64</em>, <em>hex</em>, and <em>ROT13</em>.</li>
+      <li>Combine the decoded parts with underscores: <code>CTF{part1_part2_part3}</code>.</li>
+    </ul>
+
+    <p>If you want to test your decoding skills locally: try <code>base64 --decode</code>, <code>xxd -r -p</code> (or <code>python</code>), and <code>tr 'A-Za-z' 'N-ZA-Mn-za-m'</code> for rot13.</p>
+
+    <p>Good luck — and remember: look everywhere in the source (comments, attributes, CSS, JS).</p>
+  </main>
+
+  <!-- PART 1 (hidden in an HTML comment): ZmlkZGxl -->
+
+  <form>
+    <!-- A hidden field was used during development -->
+    <input type="hidden" id="dev-token" name="dev-token" value="7365656b">
+  </form>
+
+  <script>
+    // PART 3 (hidden in JS): fhpprrq
+    (function(){
+      // small intentionally unused variable to hide part 3
+      var unused = 'fhpprrq';
+      // nothing to do with the page, just hiding a piece
+      console.log('Thanks for trying the beginner challenge!');
+    })();
+  </script>
+
+  <!--
+    ======= TEACHER SOLUTION (hidden for players) =======
+
+    Locations & how to decode:
+      - PART 1: HTML comment: "ZmlkZGxl"  --> Base64 decode => "fiddle"
+        command: echo 'ZmlkZGxl' | base64 --decode
+
+      - PART 2: hidden input value: "7365656b"  --> Hex decode => "seek"
+        command: echo 7365656b | xxd -r -p
+        (or in Python: bytes.fromhex('7365656b').decode())
+
+      - PART 3: JS variable: "fhpprrq"  --> ROT13 => "succeed"
+        command: echo 'fhpprrq' | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+
+      Combine: CTF{fiddle_seek_succeed}
+  -->
+
+</body>
+</html>
